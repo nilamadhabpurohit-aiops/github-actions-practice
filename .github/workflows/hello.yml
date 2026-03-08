@@ -20,7 +20,7 @@ jobs:
       - name: Show branch name
         run: echo "Branch name: ${{ github.ref_name }}"
 
-      - name: List files in repository
+      - name: List files
         run: ls -la
 
       - name: Show runner OS
