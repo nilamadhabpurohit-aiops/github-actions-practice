@@ -1,16 +1,27 @@
-name: Hello Github Actions
+name: Hello GitHub Actions
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  say-hello:
-    runs-on: ubuntu-latest  
-    steps:
-      - name: Say Hello
-        run: echo "Hello, Github Actions!"  
+  greet:
+    runs-on: ubuntu-latest
 
-        
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print greeting
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Print date and time
+        run: date
+
+      - name: Show branch name
+        run: echo "Branch name: ${{ github.ref_name }}"
+
+      - name: List files in repository
+        run: ls -la
+
+      - name: Show runner OS
+        run: echo "Runner OS: $RUNNER_OS"
