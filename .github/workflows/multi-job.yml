@@ -11,12 +11,12 @@ jobs:
       - name: Build Step
         run: echo "This is the build job."
 
-    test:
+  test:
       runs-on: ubuntu-latest
       - name: Test Step
         run: echo "This is the test job."  
 
-    deploy:
+  deploy:
       runs-on: ubuntu-latest
       - name: Deploy Step
         run: echo "This is the deploy job."
