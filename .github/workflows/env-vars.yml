@@ -1,0 +1,23 @@
+name: Environment Variables Demo
+
+on:
+  push:
+
+env:
+  APP_NAME: "MyApp"
+
+jobs:
+  env-test:
+    runs-on: ubuntu-latest
+
+    env:
+      environment: "staging"
+  
+  steps:
+    - name: Print Environment Variables
+      run: |
+        echo "App Name: $APP_NAME"
+        echo "Environment: $environment"
+        echo "Version: $VERSION"
+        echo "Commit SHA: ${{ github.sha }}"
+        echo "Triggered by: ${{ github.actor }}"
