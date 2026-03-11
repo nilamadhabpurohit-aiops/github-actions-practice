@@ -1,0 +1,40 @@
+name: Runner Comparison
+
+on:
+  push:
+
+jobs:
+
+  ubuntu-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: OS Information
+        run: |
+          echo "OS: Ununtu"
+          uname -a
+          hostname
+          whoami
+  
+  windows-job:
+    runs-on: windows-latest
+
+    steps:
+      - name: OS Information
+        run: |
+          echo "OS: Windows"
+          systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+          hostname
+          whoami
+
+  macos-job:
+    runs-on: macos-latest 
+
+    steps:
+      - name: OS Information
+        run: |
+          echo "OS: macOS"
+          sw_vers
+          hostname
+          whoami
+          
