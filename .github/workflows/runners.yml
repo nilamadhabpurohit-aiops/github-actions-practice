@@ -14,7 +14,11 @@ jobs:
           echo "OS: Ununtu"
           uname -a
           hostname
-          whoami
+          whoami      
+          docker --version
+          python3 --version
+          node --version
+          git --version
   
   windows-job:
     runs-on: windows-latest
@@ -26,6 +30,10 @@ jobs:
           systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
           hostname
           whoami
+          docker --version
+          python3 --version
+          node --version
+          git --version
 
   macos-job:
     runs-on: macos-latest 
@@ -37,4 +45,7 @@ jobs:
           sw_vers
           hostname
           whoami
-          
+          docker --version
+          python3 --version
+          node --version
+          git --version
