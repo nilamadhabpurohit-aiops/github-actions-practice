@@ -1,0 +1,25 @@
+name: Self Hosted Runner Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  test_runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Show Host Name
+        run: hostname
+
+      - name: Show Working Directory
+        run: pwd
+
+      - name: Create a file
+        run: echo "This is a test file created by the self-hosted runner workflow." > test_file.txt
+
+      - name: Verify file creation
+        run: cat test_file.txt
+        
+      - name: List files in the directory
+        run: ls -la
