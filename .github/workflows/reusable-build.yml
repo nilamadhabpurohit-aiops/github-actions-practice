@@ -5,12 +5,14 @@ on:
 
     inputs:
       app_name:
+        description: "Application name"
         required: true
         type: string
-
+  
       environment:
+        description: "Environment"
         required: false
-        default: staging
+        default: "staging"
         type: string
 
     secrets:
@@ -19,31 +21,32 @@ on:
 
     outputs:
       build_version:
-        description: Build version
+        description: "Generated build version"
         value: ${{ jobs.build.outputs.build_version }}
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     outputs:
-      build_version: ${{ steps.version.outputs.version }}
+      build_version: ${{ steps.set_version.outputs.version }}
 
     steps:
 
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Print build info
-        run: echo "Building ${{ inputs.app_name }} for ${{ inputs.environment }}"
+      - name: Print inputs
+        run: |
+          echo "App: ${{ inputs.app_name }}"
+          echo "Env: ${{ inputs.environment }}"
 
-      - name: Verify docker token
-        run: echo "Docker token is set: true"
+      - name: Check secret exists
+        run: echo "Docker token configured"
 
       - name: Generate version
-        id: version
+        id: set_version
         run: |
-          VERSION=v1.0-${GITHUB_SHA::7}
+          SHORT_SHA=${GITHUB_SHA::7}
+          VERSION=v1.0-$SHORT_SHA
           echo "version=$VERSION" >> $GITHUB_OUTPUT
