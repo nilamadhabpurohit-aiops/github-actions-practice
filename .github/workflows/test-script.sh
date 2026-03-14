@@ -2,7 +2,7 @@
 
 echo "Running test"
 
-if [ 2 -eq 2 ]
+if [ 2 -eq 3 ]
 then
   echo "Test passed"
 else
