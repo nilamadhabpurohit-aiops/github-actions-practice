@@ -100,6 +100,13 @@ jobs:
 
     steps:
 
+      - name: Login Docker
+        uses: docker/login-action@v3
+
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3
 
@@ -114,7 +121,7 @@ jobs:
           cosign sign \
           --key cosign.key \
           ${{ secrets.DOCKER_USERNAME }}/github-actions-capstone:latest
-
+          
 # ---------------- DEPLOY ----------------
 
   deploy:
