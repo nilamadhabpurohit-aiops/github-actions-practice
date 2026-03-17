@@ -1,3 +1,5 @@
 flask
 gunicorn
-gunicorn
+
+flake8
+bandit

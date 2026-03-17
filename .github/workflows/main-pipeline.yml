@@ -21,7 +21,7 @@ jobs:
     uses: ./.github/workflows/reusable-build-test.yml
 
     with:
-      python_version: "3.11"
+      python_version: ["3.11", "3.12", "3.11"]
       run_tests: true
 
 # ---------------- DOCKER BUILD ----------------
@@ -121,7 +121,7 @@ jobs:
           cosign sign \
           --key cosign.key \
           ${{ secrets.DOCKER_USERNAME }}/github-actions-capstone:latest
-          
+
 # ---------------- DEPLOY ----------------
 
   deploy:
