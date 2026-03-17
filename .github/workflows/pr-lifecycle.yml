@@ -1,0 +1,25 @@
+name: PR Lifecycle
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed] 
+
+jobs:
+
+  pr-info:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Print PR event info
+        run: |
+          echo "Event: ${{ github.event.action }}"
+          echo "Title: ${{ github.event.pull_request.title }}"
+          echo "Author: ${{ github.event.pull_request.user.login }}"
+          echo "Source: ${{ github.head_ref }}"
+          echo "Target: ${{ github.base_ref }}"
+
+      - name: Run only when merged
+        if: github.event.pull_request.merged == true
+        run: echo "PR was merged"

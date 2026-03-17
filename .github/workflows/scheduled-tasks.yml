@@ -1,0 +1,24 @@
+name: Scheduled Tasks
+
+on:
+
+  schedule:
+    - cron: '30 2 * * 1'
+    - cron: '0 */6 * * *'
+
+  workflow_dispatch:
+
+jobs:
+
+  schedule-job:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Show schedule
+        run: echo "Triggered by ${{ github.event.schedule }}"
+
+      - name: Health check
+        run: |
+          curl -o /dev/null -s -w "%{http_code}" https://google.com

@@ -1,0 +1,19 @@
+name: Skip Docs Only
+
+on:
+
+  push:
+
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - run: echo "Code change detected"
